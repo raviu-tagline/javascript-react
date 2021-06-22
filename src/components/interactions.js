@@ -1,4 +1,5 @@
 import React from "react";
+import Buttons from "../reusables/Buttons";
 
 const Interactions = () => {
   const handleClick = () => {
@@ -26,9 +27,21 @@ const Interactions = () => {
 
   return (
     <>
-      <button onClick={handleClick}>Click for alert</button>{" "}
-      <button onClick={handlePrompt}>Click for prompt</button>{" "}
-      <button onClick={handleConfirm}>Click for confirm</button>
+      <Buttons
+        onClick={handleClick}
+        text="Click for alert"
+        style={{ marginTop: "10px" }}
+      />
+      <Buttons
+        onClick={handlePrompt}
+        text="Click for prompt"
+        style={{ marginTop: "10px" }}
+      />
+      <Buttons
+        onClick={handleConfirm}
+        text="Click for confirm"
+        style={{ marginTop: "10px" }}
+      />
     </>
   );
 };

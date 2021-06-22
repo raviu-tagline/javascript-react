@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Buttons from "../reusables/Buttons";
+import P from "../reusables/P";
 
 const Objects = () => {
   // No such restrictions to define key in object
@@ -129,29 +131,24 @@ const Objects = () => {
     <div style={{ marginTop: "1.5rem", marginBottom: "1.5rem" }}>
       Objects 1
       {Object.keys(obj).map((val, ind) => (
-        <p key={ind}>
-          {val} - {obj[val]}
-        </p>
+        <P key={ind} text={`${val} - ${obj[val]}`} />
       ))}
       --------------------------
-      <p />
+      <br />
       Object 2{" "}
       {Object.keys(ordred).map((val, ind) => (
-        <p key={ind}>
-          {val} - {ordred[val]}
-        </p>
+        <P key={ind} text={`${val} - ${ordred[val]}`} />
       ))}
       --------------------------
       <p />
       Object 3{" "}
       {Object.keys(strObj).map((val, ind) => (
-        <p key={ind}>
-          {+val}- {strObj[val]}
-        </p>
+        <P key={ind} text={`${+val} - ${ordred[val]}`} />
       ))}
       --------------------------
-      <p />
-      state objects <br />
+      <br />
+      state objects
+      <br />
       --------------------------
       {mObj && handleObject(mObj)}
       {console.log(`print`, print)}
@@ -170,13 +167,13 @@ const Objects = () => {
             {Object.keys(print).map((k, ind) => (
               <tr key={ind}>
                 <td>
-                  <p>{k}</p>
+                  <P text={k} />
                 </td>
                 <td></td>
                 <td>-</td>
                 <td></td>
                 <td>
-                  <p>{print[k]}</p>
+                  <P text={print[k]} />
                 </td>
               </tr>
             ))}
@@ -184,7 +181,7 @@ const Objects = () => {
         </table>
       </div>
       <br />
-      <button onClick={() => handleRemove(print)}>Remove item by key</button>
+      <Buttons onClick={() => handleRemove(print)} text="Remove item by key" />
     </div>
   );
 };

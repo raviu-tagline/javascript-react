@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
+import Buttons from "../reusables/Buttons";
+import P from "../reusables/P";
 const Login = () => {
   let [userName, setUser] = useState("default");
   const [password, setPassword] = useState("");
@@ -53,20 +55,24 @@ const Login = () => {
   }, [userName, password]);
   return (
     <>
-      <br />
-      <br />
-      <button onClick={handleState}>set state directly</button>
-      <br />
-      <br />
-      <button onClick={handleStateMethod}>set state using setState()</button>
-      <br />
-      <br />
-      <button onClick={handleLogin}>
-        Login here using callback() and setState()
-      </button>
+      <Buttons
+        onClick={handleState}
+        text="set state directly"
+        style={{ marginTop: "10px" }}
+      />
+      <Buttons
+        onClick={handleStateMethod}
+        text="set state using setState()"
+        style={{ marginTop: "10px" }}
+      />
+      <Buttons
+        onClick={handleLogin}
+        text="Login here using callback() and setState()"
+        style={{ marginTop: "10px" }}
+      />
       {/* This will not rendered when state changes because react will not re-render component when we directly change state */}
-      <p>user name: {userName}</p>
-      <p>password: {password}</p>
+      <P text={`user name: ${userName}`} />
+      <P text={`password: ${password}`} />
     </>
   );
 };

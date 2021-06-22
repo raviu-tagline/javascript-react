@@ -1,4 +1,5 @@
 import React from "react";
+import Buttons from "../reusables/Buttons";
 
 const Use_strict = () => {
   const handleClick = () => {
@@ -10,12 +11,12 @@ const Use_strict = () => {
     alert(test + " example from use strict");
   };
 
-  const name = (params) => {
+  const name = () => {
     const test = 20;
     alert(test);
   };
 
-  return <button onClick={name}>Use strict example</button>;
+  return <Buttons onClick={name} text="Use strict example" />;
 };
 
 export default Use_strict;

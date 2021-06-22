@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Buttons from "../reusables/Buttons";
 
 const Nullish = () => {
   let var1 = false; // This as false
@@ -24,12 +25,16 @@ const Nullish = () => {
   useEffect(() => {}, []);
   return (
     <>
-      <br />
-      <br />
-      <button onClick={handleNullish}>Click for result of nullish</button>
-      <br />
-      <br />
-      <button onClick={handleOR}>Click for result of OR operator</button>
+      <Buttons
+        onClick={handleNullish}
+        text="Click for result of nullish"
+        style={{ marginTop: "10px" }}
+      />
+      <Buttons
+        onClick={handleOR}
+        text="Click for result of OR operator"
+        style={{ marginTop: "10px" }}
+      />
     </>
   );
 };

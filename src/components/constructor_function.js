@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Buttons from "../reusables/Buttons";
+import P from "../reusables/P";
 
 const Constructor = () => {
   const [sum, calcSum] = useState(0);
@@ -49,12 +51,19 @@ const Constructor = () => {
 
   return (
     <>
-      <p>Answer of sum: {sum}</p>
-      <p>Answer of multiplication: {mul}</p>
-      <button onClick={handleSum}>Add</button>
-      <br />
-      <button onClick={handleMul}>Multiplication</button>
-      <button onClick={handleReset}>Reset</button>
+      <P text={`Answer of sum: ${sum}`} />
+      <P text={`Answer of multiplication: ${mul}`} />
+      <Buttons text="Add" onClick={handleSum} style={{ marginTop: "10px" }} />
+      <Buttons
+        text="Multiplication"
+        onClick={handleMul}
+        style={{ marginTop: "10px" }}
+      />
+      <Buttons
+        text="Reset"
+        onClick={handleReset}
+        style={{ marginTop: "10px" }}
+      />
     </>
   );
 };

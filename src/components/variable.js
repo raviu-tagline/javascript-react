@@ -1,4 +1,5 @@
 import React from "react";
+import Buttons from "../reusables/Buttons";
 
 const Variable = () => {
   const handleClick = () => {
@@ -18,7 +19,7 @@ const Variable = () => {
     /* PI = 2.14 // These gives error because const not allows to re-declare or re-initialize variable */
   };
 
-  return <button onClick={handleClick}>Variable example</button>;
+  return <Buttons onClick={handleClick} text="Variable example" />;
 };
 
 export default Variable;

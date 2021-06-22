@@ -1,4 +1,5 @@
 import React from "react";
+import Buttons from "../reusables/Buttons";
 
 const Function_exp = () => {
   // Function Declaration can be called earlier than it is defined.
@@ -13,11 +14,16 @@ const Function_exp = () => {
 
   return (
     <>
-      <br />
-      <button onClick={test}>Click to call function</button>
-      <br />
-      <br />
-      <button onClick={test2}>Click to call expr function</button>
+      <Buttons
+        text="Click to call function"
+        onClick={test}
+        style={{ marginTop: "10px" }}
+      />
+      <Buttons
+        text="Click to call expr function"
+        onClick={test2}
+        style={{ marginTop: "10px" }}
+      />
     </>
   );
 };

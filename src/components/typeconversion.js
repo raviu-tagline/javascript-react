@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import P from "../reusables/P";
 
 const Typeconversion = () => {
   const [type, setType] = useState();
@@ -21,12 +22,8 @@ const Typeconversion = () => {
   return (
     <>
       <button onClick={handleClick}>Click to change type of variable</button>{" "}
-      <p>
-        Type of boolean variable {type} {`${varBool}`}
-      </p>
-      <p>
-        Type of string variable {type2} {var1}
-      </p>
+      <P text={`Type of boolean variable ${type} {${varBool}}`} />
+      <P text={`Type of string variable ${type2} ${var1}`} />
     </>
   );
 };
