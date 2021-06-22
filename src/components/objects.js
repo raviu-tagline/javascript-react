@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Buttons from "../reusables/Buttons";
+import Button from "../reusables/Button";
 import P from "../reusables/P";
-
+import Table from "../reusables/Table";
 const Objects = () => {
   // No such restrictions to define key in object
   let obj = {
@@ -18,17 +18,6 @@ const Objects = () => {
   };
 
   const [mObj, setMObj] = useState({
-    /* states: {
-      state1: "Gujarat",
-      state: "Test",
-    },
-    test: {
-      h1: {
-        pqr: "in test st 1",
-        age: 50,
-      },
-      heritage: "city",
-    }, */
     countries: {
       country1: {
         "country id": "1",
@@ -42,13 +31,6 @@ const Objects = () => {
             areas: {
               "area id": "1.1.1.1",
               "area name": "Test",
-              /* "area name": [
-                { Katargam: "395004" },
-                { varachha: "394101" },
-                { amreli: "395101" },
-                { adajan: "396101" },
-              ], */
-              // pincode: ["395004", "394101", "395101", "395601"],
             },
           },
           "other states": {
@@ -116,9 +98,6 @@ const Objects = () => {
 
     const { [key]: value, ...rest } = obj;
 
-    console.log(`value`, value);
-    console.log(`rest`, rest);
-
     setPrint(rest);
 
     // handleObject(rest);
@@ -127,6 +106,25 @@ const Objects = () => {
   useEffect(() => {
     tmp.length !== 0 && setPrint(tmp);
   }, []);
+
+  const tStyle = {
+    border: "1",
+    style: { margin: "10px auto 0 auto" },
+  };
+
+  const tHeader = {
+    th1: {
+      text: "sr. no",
+    },
+    th2: {
+      colSpan: "3",
+      text: "Keys",
+    },
+    th3: {
+      colSpan: "2",
+      text: "Values",
+    },
+  };
   return (
     <div style={{ marginTop: "1.5rem", marginBottom: "1.5rem" }}>
       Objects 1
@@ -151,37 +149,9 @@ const Objects = () => {
       <br />
       --------------------------
       {mObj && handleObject(mObj)}
-      {console.log(`print`, print)}
-      <div className="test" style={{ display: "table", margin: "0 auto" }}>
-        <table>
-          <thead>
-            <tr>
-              <th>Keys</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>Vals</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.keys(print).map((k, ind) => (
-              <tr key={ind}>
-                <td>
-                  <P text={k} />
-                </td>
-                <td></td>
-                <td>-</td>
-                <td></td>
-                <td>
-                  <P text={print[k]} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
       <br />
-      <Buttons onClick={() => handleRemove(print)} text="Remove item by key" />
+      <Table params={print} />
+      <Button onClick={() => handleRemove(print)} text="Remove item by key" />
     </div>
   );
 };

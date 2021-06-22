@@ -39,12 +39,12 @@ const Logical = () => {
   return (
     <>
       <br />
-      <Buttons
+      <Button
         onClick={checkTrue}
         text="Click to checkTrue"
         style={{ marginTop: "10px" }}
       />
-      <Buttons
+      <Button
         onClick={checkFalse}
         text="Click to checkFalse"
         style={{ marginTop: "10px" }}

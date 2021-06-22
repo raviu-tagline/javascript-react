@@ -1,5 +1,5 @@
 import React from "react";
-import Buttons from "../reusables/Buttons";
+import Button from "../reusables/Button";
 
 const Use_strict = () => {
   const handleClick = () => {
@@ -16,7 +16,7 @@ const Use_strict = () => {
     alert(test);
   };
 
-  return <Buttons onClick={name} text="Use strict example" />;
+  return <Button onClick={name} text="Use strict example" />;
 };
 
 export default Use_strict;

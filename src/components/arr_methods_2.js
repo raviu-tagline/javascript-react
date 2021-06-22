@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import inputs from "../dynamic/arr_form_design";
-import Buttons from "../reusables/Buttons";
+import btns from "../dynamic/arr2_btn_designs";
+import inputs from "../dynamic/arr2_form_design";
+import Button from "../reusables/Button";
+import CustomInput from "../reusables/CustomInput";
+import Label from "../reusables/Label";
 
 const Arr_2 = () => {
   const [arr, setArr] = useState([]);
@@ -8,11 +11,36 @@ const Arr_2 = () => {
     console.log(`filter`);
   };
 
-  const handleFind = () => {};
+  const handleFind = () => {
+    console.log(`Find click`);
+  };
 
-  const handleSome = () => {};
+  const handleSome = () => {
+    console.log(`Some click`);
+  };
 
-  const handleEvery = () => {};
+  const handleEvery = () => {
+    console.log(`Every click`);
+  };
+
+  const handleClicks = (text) => {
+    switch (text) {
+      case "Filter":
+        return handleFilter;
+
+      case "Some":
+        return handleSome;
+
+      case "Every":
+        return handleEvery;
+
+      case "Find":
+        return handleFind;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <>
@@ -21,25 +49,24 @@ const Arr_2 = () => {
         {inputs &&
           Object.values(inputs).map(({ label, ...val }, ind) => (
             <>
-              <label key={ind}>{label}</label>
-              <input {...val} />
-              <br />
+              <Label key={ind} text={label} />
+              <CustomInput {...val} />
               <br />
             </>
           ))}
       </form>
       <br />
-      <Buttons text="Filter" onClick={handleFilter} />
-      <br />
-      <Buttons text="Find" onClick={handleFind} style={{ marginTop: "10px" }} />
-      <br />
-      <Buttons text="Some" onClick={handleSome} style={{ marginTop: "10px" }} />
-      <br />
-      <Buttons
-        text="Every"
-        onClick={handleEvery}
-        style={{ marginTop: "10px" }}
-      />
+      {Object.values(btns).map(({ text, ...other }, ind) => (
+        <>
+          <Button
+            key={ind}
+            text={text}
+            onClick={handleClicks(text)}
+            {...other}
+          />
+          <br />
+        </>
+      ))}
     </>
   );
 };

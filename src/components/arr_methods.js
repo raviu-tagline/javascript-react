@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Buttons from "../reusables/Buttons";
+import Button from "../reusables/Button";
+import ArrBtns from "../dynamic/arr_btn_design";
+import Table from "../reusables/Table";
 
 const Arr = () => {
   const [arr, setArr] = useState([]);
@@ -53,9 +55,7 @@ const Arr = () => {
   };
 
   const handleSort = () => {
-    // tmp = arr.slice();
-
-    console.log(`tmp`, tmp);
+    tmp = arr.slice();
 
     if (window.confirm("Want to sort in Ascending order?")) {
       tmp.sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
@@ -135,13 +135,44 @@ const Arr = () => {
     let ele = prompt("Last index of ");
     let ind = prompt("From index");
     if (!ind || ind === "") {
-      console.log(`hellio`);
       ind = 0;
     }
-    console.log(`ind`, ind);
-    console.log(`ele`, ele);
     let lastInd = tmp.lastIndexOf(ele, ind);
     alert("Last Index of " + ele + " is " + (lastInd + 1));
+  };
+
+  const handleClicks = (name) => {
+    switch (name) {
+      case "string":
+        return handleSetStr;
+
+      case "array":
+        return handleSetArr;
+
+      case "add":
+        return handleAdd;
+
+      case "sort":
+        return handleSort;
+
+      case "reverse":
+        return handleReverse;
+
+      case "remove":
+        return handleRemove;
+
+      case "reduce":
+        return handleReduce;
+
+      case "include":
+        return handleInclude;
+
+      case "lastIndex":
+        return handleLastIndex;
+
+      default:
+        break;
+    }
   };
 
   useEffect(() => {
@@ -161,84 +192,23 @@ const Arr = () => {
     }
 
     tmp = arr.slice();
-    console.log(`tmp effect`, tmp);
   }, [set]);
+
   return (
     <>
-      <table border="1" style={{ margin: "10px auto 0 auto" }}>
-        <thead>
-          <tr>
-            <th colSpan="2">Array</th>
-          </tr>
-          <tr>
-            <th>Index</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {arr &&
-            arr.map((val, ind) => (
-              <tr>
-                <td>{ind + 1}</td>
-                <td>{val}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      <Buttons
-        text="Convert to string"
-        onClick={handleSetStr}
-        style={{ marginTop: "10px" }}
-      />
+      <Table params={arr} />
       {str && <p>Array to string: '{str}'</p>}
-      <br />
-      <Buttons
-        text="Convert to array"
-        onClick={handleSetArr}
-        style={{ marginTop: "10px" }}
-      />
-      <br />
-      <Buttons
-        text="Add element"
-        onClick={handleAdd}
-        style={{ marginTop: "10px" }}
-      />
-      <br />
-      <Buttons
-        text="Sort array"
-        onClick={handleSort}
-        style={{ marginTop: "10px" }}
-      />
-      <br />
-      <Buttons
-        text="Reverse array"
-        onClick={handleReverse}
-        style={{ marginTop: "10px" }}
-      />
-      <br />
-      <Buttons
-        text="Remove from array"
-        onClick={handleRemove}
-        style={{ marginTop: "10px" }}
-      />
-      <br />
-      <Buttons
-        text="reduce()/ reduceRight() of Array"
-        onClick={handleReduce}
-        style={{ marginTop: "10px" }}
-      />
-      <br />
-      <Buttons
-        text="Include in array"
-        onClick={handleInclude}
-        style={{ marginTop: "10px" }}
-      />
-      <br />
-      <Buttons
-        text="Find last index in array"
-        onClick={handleLastIndex}
-        style={{ marginTop: "10px" }}
-      />
+      {Object.values(ArrBtns).map(({ text, name, ...other }, ind) => (
+        <>
+          <Button
+            text={text}
+            onClick={handleClicks(name)}
+            {...other}
+            style={{ marginTop: "10px" }}
+          />
+          <br />
+        </>
+      ))}
     </>
   );
 };

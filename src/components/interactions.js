@@ -1,5 +1,5 @@
 import React from "react";
-import Buttons from "../reusables/Buttons";
+import Button from "../reusables/Button";
 
 const Interactions = () => {
   const handleClick = () => {
@@ -27,17 +27,17 @@ const Interactions = () => {
 
   return (
     <>
-      <Buttons
+      <Button
         onClick={handleClick}
         text="Click for alert"
         style={{ marginTop: "10px" }}
       />
-      <Buttons
+      <Button
         onClick={handlePrompt}
         text="Click for prompt"
         style={{ marginTop: "10px" }}
       />
-      <Buttons
+      <Button
         onClick={handleConfirm}
         text="Click for confirm"
         style={{ marginTop: "10px" }}

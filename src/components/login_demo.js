@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Buttons from "../reusables/Buttons";
+import Button from "../reusables/Button";
 import P from "../reusables/P";
 const Login = () => {
   let [userName, setUser] = useState("default");
@@ -55,17 +55,17 @@ const Login = () => {
   }, [userName, password]);
   return (
     <>
-      <Buttons
+      <Button
         onClick={handleState}
         text="set state directly"
         style={{ marginTop: "10px" }}
       />
-      <Buttons
+      <Button
         onClick={handleStateMethod}
         text="set state using setState()"
         style={{ marginTop: "10px" }}
       />
-      <Buttons
+      <Button
         onClick={handleLogin}
         text="Login here using callback() and setState()"
         style={{ marginTop: "10px" }}
