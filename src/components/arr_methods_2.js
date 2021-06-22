@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import btns from "../dynamic/arr2_btn_designs";
 import inputs from "../dynamic/arr2_form_design";
 import Button from "../reusables/Button";
-import CustomInput from "../reusables/CustomInput";
-import Label from "../reusables/Label";
+import Form from "../reusables/Form";
 
 const Arr_2 = () => {
-  const [arr, setArr] = useState([]);
+  const [arr, setArr] = useState([{}]);
+  let obj;
+
   const handleFilter = () => {
     console.log(`filter`);
   };
@@ -42,10 +43,37 @@ const Arr_2 = () => {
     }
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(`form submitted`, e.target.f_name.value);
+  };
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+
+    obj = [
+      ...obj,
+      {
+        [name]: [value],
+      },
+    ];
+
+    console.log(`obj`, obj);
+  };
+
+  useEffect(() => {
+    obj = arr.slice();
+  }, []);
+
   return (
     <>
       <br />
-      <form>
+      <Form
+        attributes={inputs}
+        onSubmit={(e) => onSubmit(e)}
+        onChange={(e) => onChange(e)}
+      />
+      {/* <form>
         {inputs &&
           Object.values(inputs).map(({ label, ...val }, ind) => (
             <>
@@ -54,7 +82,7 @@ const Arr_2 = () => {
               <br />
             </>
           ))}
-      </form>
+      </form> */}
       <br />
       {Object.values(btns).map(({ text, ...other }, ind) => (
         <>

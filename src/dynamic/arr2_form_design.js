@@ -17,6 +17,11 @@ const inputs = {
     placeholder: "Enter you salary",
     label: "Salary: ",
   },
+  submitBtn: {
+    type: "submit",
+    name: "submit",
+    value: "Submit",
+  },
 };
 
 export default inputs;

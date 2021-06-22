@@ -1,6 +1,6 @@
 import "./App.css";
-// import Arr_2 from "./components/arr_methods_2";
-import Arr from "./components/arr_methods";
+import Arr_2 from "./components/arr_methods_2";
+// import Arr from "./components/arr_methods";
 // import Variable from "./components/variable";
 // import Use_strict from "./components/use_strict";
 // import Interactions from "./components/interactions";
@@ -9,7 +9,7 @@ import Arr from "./components/arr_methods";
 // import Logical from "./components/logicals";
 // import Nullish from "./components/nullish_coalescing_operator";
 // import Login from "./components/login_demo";*/
-import Objects from "./components/objects";
+// import Objects from "./components/objects";
 // import Function_exp from "./components/function_expression";
 // import Constructor from "./components/constructor_function";
 
@@ -24,11 +24,11 @@ function App() {
       {/* <Logical /> */}
       {/* <Nullish /> */}
       {/* <Login /> */}
-      <Objects />
+      {/* <Objects /> */}
       {/* <Function_exp /> */}
       {/* <Constructor /> */}
-      <Arr />
-      {/* <Arr_2 /> */}
+      {/* <Arr /> */}
+      <Arr_2 />
     </div>
   );
 }
