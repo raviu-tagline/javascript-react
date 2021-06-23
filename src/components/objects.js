@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../reusables/Button";
 import P from "../reusables/P";
 import Table from "../reusables/Table";
+// import Table from "../reusables/Table2";
 const Objects = () => {
   // No such restrictions to define key in object
   let obj = {
@@ -55,6 +56,7 @@ const Objects = () => {
   };
   let tmp = {};
 
+  let index = 0;
   const handleObject = (obj) => {
     let vals = Object.values(obj);
     let kys = Object.keys(obj);
@@ -62,15 +64,21 @@ const Objects = () => {
       if (typeof val === "object") {
         handleObject(val);
       } else {
-        rtrnParagraph(kys[ind], val);
+        rtrnParagraph(kys[ind], val, index);
+        index += 1;
       }
     });
   };
 
-  const rtrnParagraph = (key, value) => {
+  const rtrnParagraph = (key, value, index) => {
     tmp = {
       ...tmp,
       [key]: value,
+      // [`row${index + 1}`]: {
+      //   // [key]: value,
+      //   [`col${index + 1}`]: key,
+      //   [`col${index + 2}`]: value,
+      // },
     };
   };
 
@@ -127,7 +135,7 @@ const Objects = () => {
   };
   return (
     <div style={{ marginTop: "1.5rem", marginBottom: "1.5rem" }}>
-      Objects 1
+      {/* Objects 1
       {Object.keys(obj).map((val, ind) => (
         <P key={ind} text={`${val} - ${obj[val]}`} />
       ))}
@@ -142,15 +150,15 @@ const Objects = () => {
       Object 3{" "}
       {Object.keys(strObj).map((val, ind) => (
         <P key={ind} text={`${+val} - ${ordred[val]}`} />
-      ))}
-      --------------------------
+      ))} */}
+      {/* -------------------------- */}
       <br />
       state objects
       <br />
       --------------------------
       {mObj && handleObject(mObj)}
       <br />
-      <Table params={print} />
+      <Table thead={tHeader} isSerialNo params={print} />
       <Button onClick={() => handleRemove(print)} text="Remove item by key" />
     </div>
   );

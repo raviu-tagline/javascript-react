@@ -1,7 +1,6 @@
 import React from "react";
 
 const Table = (props) => {
-  console.log(`props`, props);
   return (
     <>
       <table border="1" style={{ margin: "10px auto" }}>
@@ -12,16 +11,18 @@ const Table = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props?.params &&
-            Object.keys(props.params).map((val, ind) => (
-              <>
-                <tr>
-                  {props.isSerialNo && <td>{ind + 1}</td>}
-                  <td>{val}</td>
-                  <td>{props.params[val]}</td>
-                </tr>
-              </>
-            ))}
+          {Object.values(props.params).map((cols, ind) => (
+            <>
+              <tr key={ind}>
+                {props.isSerialNo && <td>{ind + 1}</td>}
+                {Object.values(cols).map((val, ind2) => (
+                  <>
+                    <td key={ind2}>{val}</td>
+                  </>
+                ))}
+              </tr>
+            </>
+          ))}
         </tbody>
       </table>
     </>

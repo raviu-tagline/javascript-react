@@ -3,10 +3,11 @@ import btns from "../dynamic/arr2_btn_designs";
 import inputs from "../dynamic/arr2_form_design";
 import Button from "../reusables/Button";
 import Form from "../reusables/Form";
+import Table from "../reusables/Table";
 
 const Arr_2 = () => {
-  const [arr, setArr] = useState([{}]);
-  let obj;
+  const [arr, setArr] = useState([]);
+  const [obj, setObj] = useState({});
 
   const handleFilter = () => {
     console.log(`filter`);
@@ -45,31 +46,44 @@ const Arr_2 = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(`form submitted`, e.target.f_name.value);
+    if (obj) {
+      setArr([...arr, obj]);
+    } else {
+      console.log(`Array empty`);
+    }
   };
 
   const onChange = (e) => {
     const { name, value } = e.target;
 
-    obj = [
-      ...obj,
-      {
-        [name]: [value],
-      },
-    ];
+    if (value) {
+      setObj({
+        ...obj,
+        [name]: value,
+      });
+    }
 
-    console.log(`obj`, obj);
+    console.log(`obj in change`, obj);
   };
 
-  useEffect(() => {
-    obj = arr.slice();
-  }, []);
+  const tHeader = {
+    th1: {
+      text: "sr. no",
+    },
+    th2: {
+      text: "Values",
+    },
+  };
+
+  useEffect(() => {}, [arr]);
 
   return (
     <>
       <br />
+      {console.log(`obj in component`, obj)}
       <Form
         attributes={inputs}
+        values={obj && obj}
         onSubmit={(e) => onSubmit(e)}
         onChange={(e) => onChange(e)}
       />
@@ -84,6 +98,13 @@ const Arr_2 = () => {
           ))}
       </form> */}
       <br />
+      {arr &&
+        Object.values(arr).map((val, ind) => (
+          <>
+            {console.log(`Hello there`, val)}
+            <Table thead={tHeader} params={val} />
+          </>
+        ))}
       {Object.values(btns).map(({ text, ...other }, ind) => (
         <>
           <Button
